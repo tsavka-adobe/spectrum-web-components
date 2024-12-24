@@ -14,6 +14,7 @@ import {
     CalendarDate,
     CalendarDateTime,
     DateFormatter,
+    DateValue,
     getLocalTimeZone,
     now,
     Time,
@@ -45,7 +46,7 @@ import {
     styleMap,
     when,
 } from '@spectrum-web-components/base/src/directives.js';
-import { Calendar, type DateValue } from '@spectrum-web-components/calendar';
+import { Calendar } from '@spectrum-web-components/calendar';
 import { ManageHelpText } from '@spectrum-web-components/help-text/src/manage-help-text.js';
 import {
     LanguageResolutionController,
@@ -55,9 +56,7 @@ import { Focusable } from '@spectrum-web-components/shared/src/focusable.js';
 
 import styles from './date-time-picker.css.js';
 
-// TODO: Load dependencies lazily when possible
 import '@spectrum-web-components/calendar/sp-calendar.js';
-import '@spectrum-web-components/icons-ui/icons/sp-icon-checkmark100.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-alert.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-calendar.js';
 import '@spectrum-web-components/overlay/sp-overlay.js';
@@ -82,7 +81,6 @@ import { InputModifier } from './segments/modifiers/InputModifier';
 import { type SegmentsModifierParams } from './segments/modifiers/SegmentsModifier';
 import {
     DateTimePickerLabels,
-    DateTimePickerValue,
     EditableSegmentType,
     Precision,
     Precisions,
@@ -112,20 +110,20 @@ export class DateTimePicker extends ManageHelpText(
      * The selected date of the component. If defined, this also indicates where the calendar opens.
      * If not, the calendar opens at the current month, and placeholder values are shown.
      */
-    @property({ attribute: false })
-    value?: DateTimePickerValue;
+    @property({ type: Object })
+    public value?: DateValue;
 
     /**
      * The minimum valid date a user can select
      */
-    @property({ attribute: false })
-    min?: DateValue;
+    @property({ type: Object })
+    public min?: DateValue;
 
     /**
      * The maximum valid date a user can select
      */
-    @property({ attribute: false })
-    max?: DateValue;
+    @property({ type: Object })
+    public max?: DateValue;
 
     /**
      * The granularity used to display the segments of the component's value
@@ -168,7 +166,7 @@ export class DateTimePicker extends ManageHelpText(
      * and can be overridden to localize the content.
      */
     @property({ attribute: false })
-    labels: DateTimePickerLabels = {
+    public labels: DateTimePickerLabels = {
         previous: 'Previous',
         next: 'Next',
         today: 'Today',
@@ -177,11 +175,8 @@ export class DateTimePicker extends ManageHelpText(
         calendar: 'Calendar',
     };
 
-    /**
-     * @private
-     */
     @property({ type: Boolean, reflect: true })
-    public focused = false;
+    focused = false;
 
     @state()
     private segments: DateTimeSegments = new DateTimeSegments([]);
@@ -196,7 +191,7 @@ export class DateTimePicker extends ManageHelpText(
     private input!: HTMLElement;
 
     private languageResolver = new LanguageResolutionController(this);
-    private get locale(): string {
+    public get locale(): string {
         return this.languageResolver.language;
     }
 
@@ -355,7 +350,7 @@ export class DateTimePicker extends ManageHelpText(
                     window.__swc.warn(
                         this,
                         `<${this.localName}> expects the 'min' to be less than 'max'. Please ensure that 'min' property's date is earlier than 'max' property's date.`,
-                        'https://opensource.adobe.com/spectrum-web-components/components/date-time-picker' // TODO: update link
+                        'https://opensource.adobe.com/spectrum-web-components/components/date-time-picker'
                     );
                 this.min = undefined;
                 this.max = undefined;
@@ -367,7 +362,7 @@ export class DateTimePicker extends ManageHelpText(
                 window.__swc.warn(
                     this,
                     `<${this.localName}> expects the preselected value to comply with the min and max constraints. Please ensure that 'value' property's date is in between the dates for the 'min' and 'max' properties.`,
-                    'https://opensource.adobe.com/spectrum-web-components/components/date-time-picker' // TODO: update link
+                    'https://opensource.adobe.com/spectrum-web-components/components/date-time-picker'
                 );
             this.value = undefined;
         }
@@ -694,7 +689,7 @@ export class DateTimePicker extends ManageHelpText(
         }
     }
 
-    private previousCommitedValue: DateTimePickerValue | undefined;
+    private previousCommitedValue: DateValue | undefined;
     /**
      * Mark the user intent to commit the selected value. If the current value
      * is different from the previous commited value, dispatch a change event.

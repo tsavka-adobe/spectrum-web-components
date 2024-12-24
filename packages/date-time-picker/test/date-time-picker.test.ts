@@ -13,6 +13,7 @@ governing permissions and limitations under the License.
 import {
     CalendarDate,
     CalendarDateTime,
+    DateValue,
     getLocalTimeZone,
     toZoned,
     ZonedDateTime,
@@ -22,7 +23,6 @@ import { NumberFormatter } from '@internationalized/number';
 import { Calendar } from '@spectrum-web-components/calendar';
 import {
     DateTimePicker,
-    DateTimePickerValue,
     EditableSegmentType,
     Precisions,
     SegmentTypes,
@@ -983,12 +983,13 @@ describe('DateTimePicker', () => {
                 SegmentTypes.DayPeriod
             );
 
-            await sendMouse({
-                type: 'click',
-                position: getElementCenter(dayPeriodSegment),
-            });
+            element.focus();
+            await elementUpdated(element);
+            await sendKeyMultipleTimes(
+                'ArrowRight',
+                editableSegments.length - 1
+            );
 
-            expectFocused(document, element, 'element not focused');
             expectFocused(
                 element.shadowRoot,
                 dayPeriodSegment,
@@ -1000,7 +1001,11 @@ describe('DateTimePicker', () => {
                 editableSegments.length - 1
             );
 
-            expectFocused(element.shadowRoot, element.firstEditableSegment);
+            expectFocused(
+                element.shadowRoot,
+                element.firstEditableSegment,
+                'first segment not focused'
+            );
 
             await sendKeys({ press: 'ArrowLeft' });
 
@@ -3943,7 +3948,7 @@ describe('DateTimePicker', () => {
     describe('Segments creation on a 12h format', () => {
         const locale = 'en-US';
         const fixedYear = 20;
-        const value: DateTimePickerValue = new ZonedDateTime(
+        const value: DateValue = new ZonedDateTime(
             fixedYear,
             fixedMonth,
             fixedDay,
@@ -4164,7 +4169,7 @@ describe('DateTimePicker', () => {
     describe('Segments creation on a 24h format', () => {
         const locale = 'en-GB';
         const fixedYear = 20;
-        const value: DateTimePickerValue = new ZonedDateTime(
+        const value: DateValue = new ZonedDateTime(
             fixedYear,
             fixedMonth,
             fixedDay,

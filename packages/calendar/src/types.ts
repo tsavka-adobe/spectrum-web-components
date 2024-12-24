@@ -10,15 +10,6 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
-import {
-    CalendarDate,
-    CalendarDateTime,
-    ZonedDateTime,
-} from '@internationalized/date';
-
-export type DateValue = CalendarDate | CalendarDateTime | ZonedDateTime;
-export type CalendarValue = DateValue;
-
 export interface CalendarWeekday {
     narrow: string;
     long: string;

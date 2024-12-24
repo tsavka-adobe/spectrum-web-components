@@ -11,16 +11,22 @@ governing permissions and limitations under the License.
 */
 import { CalendarDate, DateValue } from '@internationalized/date';
 
-import { html, type TemplateResult } from '@spectrum-web-components/base';
-import { CalendarValue } from '@spectrum-web-components/calendar';
-
+import {
+    css,
+    CSSResultArray,
+    html,
+    SpectrumElement,
+    type TemplateResult,
+} from '@spectrum-web-components/base';
 import { spreadProps } from '../../../test/lit-helpers.js';
 
+import '@spectrum-web-components/action-button/sp-action-button.js';
 import '@spectrum-web-components/calendar/sp-calendar.js';
+import '@spectrum-web-components/icons-workflow/icons/sp-icon-delete.js';
 import '@spectrum-web-components/theme/sp-theme.js';
 
 type ComponentArgs = {
-    value?: CalendarValue;
+    value?: DateValue;
     min?: DateValue;
     max?: DateValue;
     padded?: boolean;
@@ -28,7 +34,7 @@ type ComponentArgs = {
 };
 
 type StoryArgs = ComponentArgs & {
-    onChange?: (dateTime: CalendarValue) => void;
+    onChange?: (dateTime: DateValue) => void;
 };
 
 export default {
@@ -76,7 +82,7 @@ export default {
 };
 
 const computeProps = (args: StoryArgs): ComponentArgs => {
-    const timestampToValue = (timestamp: number): CalendarValue => {
+    const timestampToValue = (timestamp: number): DateValue => {
         const date = new Date();
         date.setTime(timestamp);
         return new CalendarDate(
@@ -175,4 +181,49 @@ export const bengaliIndiaLocale = (args: StoryArgs): TemplateResult => {
             ></sp-calendar>
         </sp-theme>
     `;
+};
+
+export const clearSelected = (args: StoryArgs): TemplateResult => {
+    const styles = css`
+        :host {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: max-content;
+        }
+    `;
+
+    class ClearableCalendar extends SpectrumElement {
+        public static override get styles(): CSSResultArray {
+            return [styles];
+        }
+
+        private handleClear(): void {
+            this.shadowRoot?.querySelector('sp-calendar')?.clear();
+        }
+
+        public override render(): TemplateResult {
+            return html`
+                <sp-calendar
+                    ...=${spreadProps(computeProps(args))}
+                ></sp-calendar>
+                <sp-action-button @click=${() => this.handleClear()}>
+                    <sp-icon-delete slot="icon"></sp-icon-delete>
+                    Clear
+                </sp-action-button>
+            `;
+        }
+    }
+
+    if (!customElements.get('clearable-calendar'))
+        customElements.define('clearable-calendar', ClearableCalendar);
+
+    return html`
+        <clearable-calendar></clearable-calendar>
+    `;
+};
+
+clearSelected.swc_vrt = {
+    skip: true,
 };

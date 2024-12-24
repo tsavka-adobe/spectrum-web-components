@@ -12,6 +12,7 @@ governing permissions and limitations under the License.
 import {
     CalendarDate,
     DateFormatter,
+    DateValue,
     endOfMonth,
     getLocalTimeZone,
     getWeeksInMonth,
@@ -54,10 +55,8 @@ import '@spectrum-web-components/icons-workflow/icons/sp-icon-chevron-right.js';
 
 import {
     CalendarLabels,
-    CalendarValue,
     CalendarWeekday,
     DateCellProperties,
-    DateValue,
 } from './types.js';
 
 export const DAYS_PER_WEEK = 7;
@@ -67,7 +66,7 @@ export const DAYS_PER_WEEK = 7;
  * @slot prev-icon - The icon used in the "Previous Month" button
  * @slot next-icon - The icon used in the "Next Month" button
  *
- * @event change - Announces when a day is selected by emitting a `Date` object
+ * @event change - Announces when a day is selected
  */
 export class Calendar extends SpectrumElement {
     public static override get styles(): CSSResultArray {
@@ -78,20 +77,20 @@ export class Calendar extends SpectrumElement {
      * The selected date in the calendar. If defined, this also indicates where the calendar opens.
      * If not, the calendar opens at the current month.
      */
-    @property({ attribute: false })
-    value?: CalendarValue;
+    @property({ type: Object })
+    public value?: DateValue;
 
     /**
      * The minimum allowed date a user can select
      */
-    @property({ attribute: false })
-    min?: DateValue;
+    @property({ type: Object })
+    public min?: DateValue;
 
     /**
      * The maximum allowed date a user can select
      */
-    @property({ attribute: false })
-    max?: DateValue;
+    @property({ type: Object })
+    public max?: DateValue;
 
     /**
      * Indicates when the calendar should be disabled entirely
@@ -103,8 +102,8 @@ export class Calendar extends SpectrumElement {
      * Labels read by screen readers. The default values are in English
      * and can be overridden to localize the content.
      */
-    @property({ attribute: false })
-    labels: CalendarLabels = {
+    @property({ type: Object })
+    public labels: CalendarLabels = {
         previous: 'Previous',
         next: 'Next',
         today: 'Today',
@@ -129,7 +128,7 @@ export class Calendar extends SpectrumElement {
      * The locale used to format the dates and weekdays.
      * The default value is the language of the document or the user's browser.
      */
-    private get locale(): string {
+    public get locale(): string {
         return this.languageResolver.language;
     }
 
@@ -256,7 +255,7 @@ export class Calendar extends SpectrumElement {
                     window.__swc.warn(
                         this,
                         `<${this.localName}> expects the 'min' to be less than 'max'. Please ensure that 'min' property's date is earlier than 'max' property's date.`,
-                        'https://opensource.adobe.com/spectrum-web-components/components/calendar' // TODO: update link
+                        'https://opensource.adobe.com/spectrum-web-components/components/calendar'
                     );
                 this.min = undefined;
                 this.max = undefined;
@@ -268,7 +267,7 @@ export class Calendar extends SpectrumElement {
                 window.__swc.warn(
                     this,
                     `<${this.localName}> expects the preselected value to comply with the min and max constraints. Please ensure that 'value' property's date is in between the dates for the 'min' and 'max' properties.`,
-                    'https://opensource.adobe.com/spectrum-web-components/components/calendar' // TODO: update link
+                    'https://opensource.adobe.com/spectrum-web-components/components/calendar'
                 );
             this.value = undefined;
         }
