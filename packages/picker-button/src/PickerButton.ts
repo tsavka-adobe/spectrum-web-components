@@ -59,7 +59,6 @@ export class PickerButton extends SizedMixin(
             uiicononly: !this.hasText,
             textuiicon: this.hasText,
         };
-
         return html`
             <div class=${classMap(rootClasses)}>
                 <div class="spectrum-PickerButton-fill">
