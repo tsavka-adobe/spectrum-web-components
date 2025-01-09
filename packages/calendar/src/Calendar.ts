@@ -348,7 +348,7 @@ export class Calendar extends SpectrumElement {
                     @click=${this.handleNextMonth}
                 >
                     <div slot="icon">
-                        <slot name="prev-icon">
+                        <slot name="next-icon">
                             <sp-icon-chevron-right></sp-icon-chevron-right>
                         </slot>
                     </div>

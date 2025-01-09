@@ -132,7 +132,7 @@ const handleCalendarChange = (event: Event) => {
 
 ## Internationalization
 
-The `<sp-calendar` element supports multiple locales and updates its content accordingly.
+The `<sp-calendar>` element supports multiple locales and updates its content accordingly.
 `element.locale` represents the language in which the `<sp-calendar>` element is currently being delivered. By default, the value will represent the language established by the `lang` attribute on the root `<html>` element, with a fallback to `navigator.language`. This can be customized via a language context provider by a parent element that listens for `sp-language-context` event and supplies update language settings to the `callback` function. Applications leveraging the [`<sp-theme>`](./components/theme) element to manage the visual delivery or text direction of their content will also be provided with a reactive context for supplying language information to its descendants.
 
 Currently the `<sp-calendar>` elements supports only the Gregorian calendar and the AD era.
