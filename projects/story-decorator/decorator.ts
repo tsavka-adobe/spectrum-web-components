@@ -47,15 +47,17 @@ export const swcThemeDecoratorWithConfig =
             return context?.globals?.[setting] !== undefined;
         };
 
+        const globalSettings = [
+            'system',
+            'color',
+            'scale',
+            'textDirection',
+            'reducedMotion',
+            'locale',
+        ];
         let hideNavStyles;
-        if (
-            isGlobalSettingDefined('system') &&
-            isGlobalSettingDefined('color') &&
-            isGlobalSettingDefined('scale') &&
-            isGlobalSettingDefined('textDirection') &&
-            isGlobalSettingDefined('reducedMotion') &&
-            isGlobalSettingDefined('locale')
-        ) {
+
+        if (globalSettings.every(isGlobalSettingDefined)) {
             hideNavStyles = html`
                 <style>
                     sp-story-decorator::part(controls) {
