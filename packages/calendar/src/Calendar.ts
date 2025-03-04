@@ -60,6 +60,7 @@ import {
 } from './types.js';
 
 export const DAYS_PER_WEEK = 7;
+
 /**
  * @element sp-calendar
  *
