@@ -4293,6 +4293,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lit/context@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@lit/context@npm:1.1.4"
+  dependencies:
+    "@lit/reactive-element": "npm:^1.6.2 || ^2.0.0"
+  checksum: 10c0/53bb69952e642aa4f064d8c3afe74b36e1a8e148156114523850040ff333cb99e31c5de02096fd8e8c9773ecf524bad7af901cbd19b28492960ce28ef1f421c4
+  languageName: node
+  linkType: hard
+
 "@lit/react@npm:^1.0.4":
   version: 1.0.6
   resolution: "@lit/react@npm:1.0.6"
@@ -4302,7 +4311,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit/reactive-element@npm:^1.0.0 || ^2.0.0, @lit/reactive-element@npm:^2.0.4":
+"@lit/reactive-element@npm:^1.0.0 || ^2.0.0, @lit/reactive-element@npm:^1.6.2 || ^2.0.0, @lit/reactive-element@npm:^2.0.4":
   version: 2.0.4
   resolution: "@lit/reactive-element@npm:2.0.4"
   dependencies:
@@ -6775,13 +6784,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spectrum-css/accordion@npm:6.0.0-s2-foundations.16":
-  version: 6.0.0-s2-foundations.16
-  resolution: "@spectrum-css/accordion@npm:6.0.0-s2-foundations.16"
+"@spectrum-css/accordion@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "@spectrum-css/accordion@npm:7.1.0"
   peerDependencies:
-    "@spectrum-css/icon": ">=7"
-    "@spectrum-css/tokens": ">=14"
-  checksum: 10c0/0a1130fe21b27fdef9866726859073f3e96943948a7d8a28b636afbae730f0cdfb5ee13b934aa7cfd80a878bf8a2535d1dea5b9b90a0a88b09fa763e6f402d5a
+    "@spectrum-css/icon": ">=9.0.0 <10.0.0"
+    "@spectrum-css/tokens": ">=16.0.0 <17.0.0"
+  peerDependenciesMeta:
+    "@spectrum-css/icon":
+      optional: true
+    "@spectrum-css/tokens":
+      optional: true
+  checksum: 10c0/9f1d78de42d510204935de0e08b33b32bf8a090f5ee0b94869f0a0e7c3859eb66b47da4fee080d6c79fc8f46a6b84faa5e2587b596813ad493ba768bbc8546bb
   languageName: node
   linkType: hard
 
@@ -7693,7 +7707,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/accordion@workspace:packages/accordion"
   dependencies:
-    "@spectrum-css/accordion": "npm:6.0.0-s2-foundations.16"
+    "@spectrum-css/accordion": "npm:^7.1.0"
     "@spectrum-web-components/base": "npm:1.4.0"
     "@spectrum-web-components/icon": "npm:1.4.0"
     "@spectrum-web-components/icons-ui": "npm:1.4.0"
@@ -7814,8 +7828,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/base@workspace:tools/base"
   dependencies:
+    "@lit/context": "npm:^1.1.4"
     lit: "npm:^2.5.0 || ^3.1.3"
-    style-observer: "npm:^0.0.3"
+    style-observer: "npm:^0.0.5"
   languageName: unknown
   linkType: soft
 
@@ -31983,6 +31998,13 @@ __metadata:
   version: 0.0.3
   resolution: "style-observer@npm:0.0.3"
   checksum: 10c0/f27dccb506b4a683cb34a37d3b5a1e053233478f0497683699af67baef507de1bbb06e4386eb81714ac6e9a849f9779de64f12cb1386a3fc463ba39fb2fb96e3
+  languageName: node
+  linkType: hard
+
+"style-observer@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "style-observer@npm:0.0.5"
+  checksum: 10c0/f7a1412964497f5a67ba9937952c6c4d283f84b48c11014118624e55c8255e95933c9842f3f21ebcc7ce9e04567737399369f1f26ab749310f58939c3331427c
   languageName: node
   linkType: hard
 
