@@ -59,7 +59,16 @@ function buildNavigation(tests, metadata) {
                     href="${metadata.preview}/storybook"
                 ></sp-sidenav-item>
             </sp-sidenav-heading>
-            <sp-sidenav-heading label="Golden Images Hash">
+            <sp-sidenav-heading
+                label="Golden Images Hash"
+                onclick=${() => {
+                    try {
+                        navigator.clipboard.writeText(metadata.commit);
+                    } catch (_) {
+                        /* empty */
+                    }
+                }}
+            >
                 <sp-sidenav-item
                     label=${metadata.commit}
                     style="user-select: all"
