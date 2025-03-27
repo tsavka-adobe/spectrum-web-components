@@ -1,13 +1,19 @@
 {
+    "private": true,
     "name": "@adobe/spectrum-web-components",
     "version": "0.0.9",
-    "private": true,
     "description": "",
-    "type": "module",
-    "engines": {
-        "node": ">=20",
-        "yarn": ">=4.6.0"
+    "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adobe/spectrum-web-components.git"
     },
+    "bugs": {
+        "url": "https://github.com/adobe/spectrum-web-components/issues"
+    },
+    "type": "module",
     "scripts": {
         "analyze": "lit-analyzer \"{packages,tools}/*/src/**/!(*.css).ts\"",
         "build": "wireit",
@@ -22,8 +28,8 @@
         "build:ts:watch": "wireit",
         "build:types": "wireit",
         "build:watch": "wireit",
+        "changeset-publish": "yarn prepublishOnly && yarn changeset version && yarn install && yarn lint:versions --fix && yarn changeset publish --no-git-tag && yarn push-to-remote && yarn create-git-tag && yarn postpublish",
         "changeset-snapshot-publish": "yarn prepublishOnly && yarn changeset version --snapshot && yarn lint:versions --fix && yarn changeset publish --no-git-tag --tag snapshot && yarn create-git-tag && yarn postpublish",
-        "changeset-publish": "yarn changeset version && yarn install && yarn prepublishOnly && yarn lint:versions --fix && yarn changeset publish --no-git-tag && yarn push-to-remote && yarn create-git-tag && yarn postpublish",
         "chromatic": "chromatic --build-script-name storybook:build # note that --project-token must be set in your env variables",
         "create-git-tag": "node --no-warnings tasks/create-git-tag.js",
         "custom-element-json": "node tasks/custom-element-json.js",
@@ -42,10 +48,10 @@
         "icons:workflow": "wireit",
         "lint": "run-p lint:js lint:docs lint:ts lint:css lint:packagejson",
         "lint:css": "stylelint \"packages/**/*.css\" \"tools/**/*.css\"",
-        "lint:docs": "eslint -f pretty \"projects/documentation/**/*.ts\"",
-        "lint:js": "pretty-quick --pattern \"tasks/**/*.js\" && pretty-quick --pattern \"scripts/**/*.js\"",
+        "lint:docs": "eslint -f pretty --config .eslintrc.json --ignore-path .eslintignore \"projects/documentation/**/*.ts\"",
+        "lint:js": "pretty-quick --pattern \"tasks/**/*.js\" --pattern \"scripts/**/*.js\"",
         "lint:packagejson": "pretty-quick --pattern package.json --pattern \"packages/*/package.json\" --pattern \"projects/*/package.json\" --pattern \"tools/*/package.json\" --pattern \"react/*/package.json\"",
-        "lint:ts": "pretty-quick --pattern \"packages/**/*.ts\" && eslint -f pretty \"packages/**/*.ts\" && pretty-quick --pattern \"tools/**/*.ts\" && eslint -f pretty \"tools/**/*.ts\"",
+        "lint:ts": "pretty-quick --pattern \"packages/**/*.ts\" --pattern \"tools/**/*.ts\" && eslint -f pretty --config .eslintrc.json --ignore-path .eslintignore \"packages/**/*.ts\" \"tools/**/*.ts\"",
         "lint:versions": "node ./scripts/lint-versions.js",
         "new-package": "cd projects/templates && plop",
         "postcustom-element-json": "node ./tasks/run-check-cem.js",
@@ -57,8 +63,8 @@
         "preeleventy": "yarn docs:analyze",
         "prepack": "pinst --disable",
         "postpack": "pinst --enable",
-        "prepublishOnly": "rimraf react && yarn build && yarn custom-element-json && yarn verify-build-artifacts && yarn build:confirm",
         "prepublish:react": "yarn build:react && sed -i \"\" \"s/react/# react/g\" .gitignore && git commit -am \"Commit React Wrappers\" --no-verify",
+        "prepublishOnly": "rimraf react && yarn get-ready && yarn custom-element-json && yarn verify-build-artifacts && yarn build:confirm",
         "prestorybook": "wireit",
         "prestorybook:build": "cem analyze --outdir storybook/",
         "pretest:bench": "yarn build:tests && test -f test/benchmark/cli.js ||:",
@@ -95,6 +101,13 @@
         "vrt:preview": "yarn wds --config test/visual/wds-vrt.config.js",
         "vrt:quick-link": "yarn netlify deploy --alias=vrt --dir=projects/vrt-quick-link"
     },
+    "workspaces": [
+        "linters/*",
+        "packages/*",
+        "projects/*",
+        "tools/*",
+        "react/*"
+    ],
     "devDependencies": {
         "@changesets/changelog-github": "^0.5.0",
         "@changesets/cli": "^2.27.5",
@@ -202,12 +215,29 @@
         "wireit": "^0.14.3",
         "yargs": "^17.2.1"
     },
+    "keywords": [
+        "design-system",
+        "spectrum",
+        "adobe",
+        "adobe-spectrum",
+        "web components",
+        "web-components",
+        "lit-element",
+        "lit-html"
+    ],
+    "engines": {
+        "node": ">=20",
+        "yarn": ">=4.6.0"
+    },
     "wireit": {
-        "build:css:watch": {
-            "command": "node ./tasks/watch-css.js",
-            "service": true
+        "build": {
+            "dependencies": [
+                "build:ts",
+                "build:types"
+            ]
         },
         "build:css": {
+            "clean": "if-file-deleted",
             "command": "node ./tasks/build-css.js",
             "dependencies": [
                 "process-spectrum"
@@ -221,14 +251,14 @@
             "output": [
                 "packages/**/*.css.ts",
                 "tools/**/*.css.ts"
-            ],
-            "clean": "if-file-deleted"
+            ]
         },
-        "build:ts:watch": {
-            "command": "node ./tasks/watch-packages.js",
+        "build:css:watch": {
+            "command": "node ./tasks/watch-css.js",
             "service": true
         },
         "build:ts": {
+            "clean": "if-file-deleted",
             "command": "node ./tasks/esbuild-packages.js",
             "dependencies": [
                 "process-icons",
@@ -278,10 +308,14 @@
                 "!test/visual/src/index.html",
                 "!test/visual/wds-vrt.config.js",
                 "!tools/base/src/version.js"
-            ],
-            "clean": "if-file-deleted"
+            ]
+        },
+        "build:ts:watch": {
+            "command": "node ./tasks/watch-packages.js",
+            "service": true
         },
         "build:types": {
+            "clean": "if-file-deleted",
             "command": "tsc --build tsconfig-all.json --pretty",
             "dependencies": [
                 "process-icons",
@@ -302,8 +336,7 @@
                 "tools/**/tsconfig.tsbuildinfo",
                 "!**/local.d.ts",
                 "!tools/base/src/version.d.ts"
-            ],
-            "clean": "if-file-deleted"
+            ]
         },
         "build:watch": {
             "dependencies": [
@@ -311,14 +344,8 @@
                 "build:ts:watch"
             ]
         },
-        "build": {
-            "dependencies": [
-                "build:ts",
-                "build:types"
-            ]
-        },
         "icons": {
-            "command": "node ./scripts/process-icons.js && pretty-quick --pattern \"packages/**/*.svg.ts\" && eslint -f pretty --fix \"packages/**/*.svg.ts\"",
+            "command": "node ./scripts/process-icons.js && pretty-quick --pattern \"packages/**/*.svg.ts\" && eslint -f pretty --fix --config .eslintrc.json --ignore-path .eslintignore \"packages/**/*.svg.ts\"",
             "files": [
                 "scripts/process-icons.js"
             ],
@@ -327,6 +354,7 @@
             ]
         },
         "icons:ui": {
+            "clean": "if-file-deleted",
             "command": "yarn workspace @spectrum-web-components/icons-ui build",
             "files": [
                 "packages/icons-ui/bin/build.js",
@@ -343,10 +371,10 @@
                 "!packages/icons-ui/src/index.ts",
                 "!packages/icons-ui/src/custom-tag.ts",
                 "!packages/icons-workflow/src/DefaultIcon.ts"
-            ],
-            "clean": "if-file-deleted"
+            ]
         },
         "icons:workflow": {
+            "clean": "if-file-deleted",
             "command": "yarn workspace @spectrum-web-components/icons-workflow build",
             "files": [
                 "!packages/icons-workflow/bin/build.js",
@@ -362,8 +390,7 @@
                 "!packages/icons-workflow/src/custom-tag.ts",
                 "!packages/icons-workflow/src/DefaultIcon.ts",
                 "!packages/icons-workflow/bin/icons-mapping.json"
-            ],
-            "clean": "if-file-deleted"
+            ]
         },
         "prestorybook": {
             "command": "cem analyze --outdir storybook/",
@@ -383,7 +410,8 @@
             ]
         },
         "process-spectrum": {
-            "command": "node ./scripts/spectrum-vars.js && node ./tasks/process-spectrum.js && node ./scripts/generate-tokens.js && yarn format:css",
+            "clean": false,
+            "command": "node ./scripts/spectrum-vars.js && node ./tasks/process-spectrum.js && node ./scripts/generate-tokens.js && yarn lint:css --fix && pretty-quick --pattern \"{packages,tools}/**/*.css\"",
             "files": [
                 "tasks/process-spectrum.js",
                 "packages/**/spectrum-config.js",
@@ -406,18 +434,18 @@
                 "!tools/styles/theme-*.css",
                 "!tools/styles/express/scale-*.css",
                 "!tools/styles/express/theme-*.css"
-            ],
-            "clean": false
+            ]
         },
         "storybook": {
             "command": "storybook dev -p 8080 -c storybook",
-            "service": true,
             "dependencies": [
                 "build:watch",
                 "prestorybook"
-            ]
+            ],
+            "service": true
         },
         "test:create": {
+            "clean": "if-file-deleted",
             "command": "node test/visual/create.js",
             "files": [
                 "packages/*/stories/*.stories.ts",
@@ -426,16 +454,8 @@
             "output": [
                 "packages/*/test/*.test-vrt.ts",
                 "tools/*/test/*.test-vrt.ts"
-            ],
-            "clean": "if-file-deleted"
+            ]
         }
     },
-    "workspaces": [
-        "linters/*",
-        "packages/*",
-        "projects/*",
-        "tools/*",
-        "react/*"
-    ],
     "packageManager": "yarn@4.6.0"
 }

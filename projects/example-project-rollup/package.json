@@ -1,12 +1,21 @@
 {
-  "name": "example-project-rollup",
-  "version": "1.2.2",
   "private": true,
+  "name": "example-project-rollup",
+  "version": "1.2.1",
   "description": "An example project that uses the web components and gives an example of how to bundle them minimally with rollup.",
   "license": "Apache-2.0",
-  "author": "example-app",
-  "main": "index.js",
+  "author": "Adobe",
+  "homepage": "https://opensource.adobe.com/spectrum-web-components/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adobe/spectrum-web-components.git",
+    "directory": "projects/example-project-rollup"
+  },
+  "bugs": {
+    "url": "https://github.com/adobe/spectrum-web-components/issues"
+  },
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "build": "rimraf dist && yarn build:tsc && rollup -c rollup.config.js",
     "build:tsc": "tsc && cp src/styles.css out-tsc/src",
@@ -48,7 +57,17 @@
   },
   "customElements": "custom-elements.json",
   "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  }
+    "arrowParens": "avoid",
+    "singleQuote": true
+  },
+  "keywords": [
+    "design-system",
+    "spectrum",
+    "adobe",
+    "adobe-spectrum",
+    "web components",
+    "web-components",
+    "lit-element",
+    "lit-html"
+  ]
 }

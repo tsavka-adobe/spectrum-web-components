@@ -7826,6 +7826,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@spectrum-web-components/base@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@spectrum-web-components/base@npm:1.3.0"
+  dependencies:
+    lit: "npm:^2.5.0 || ^3.1.3"
+  checksum: 10c0/d60f60326c204df8fd350012a6c5502f8e81a8ec89fb80a36b9a6c6c8445ef071743f6ef1a5d415e4eedd5323cd55937ba2e77f873f493d5c9df435825a72f3d
+  languageName: node
+  linkType: hard
+
 "@spectrum-web-components/base@npm:1.4.0, @spectrum-web-components/base@workspace:tools/base":
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/base@workspace:tools/base"
@@ -8194,8 +8203,8 @@ __metadata:
 
 "@spectrum-web-components/eslint-plugin@file:./linters/eslint::locator=%40adobe%2Fspectrum-web-components%40workspace%3A.":
   version: 1.4.0
-  resolution: "@spectrum-web-components/eslint-plugin@file:./linters/eslint#./linters/eslint::hash=6e30aa&locator=%40adobe%2Fspectrum-web-components%40workspace%3A."
-  checksum: 10c0/7122b442eb96451b3f197e22a130763d048131464a7e3b9ec14017251a23c99ef0d7145498a0f3996c96eb37d326ce488afa6fcda2678820866739a6d8418bbf
+  resolution: "@spectrum-web-components/eslint-plugin@file:./linters/eslint#./linters/eslint::hash=697fa8&locator=%40adobe%2Fspectrum-web-components%40workspace%3A."
+  checksum: 10c0/d9adf05fc0c8f77a517dd6b6e96fc3fd789c79123e8481985c56226d665953b899d4ac2f010e61f1570440bb395f881bc49915e8d1900cae55c257c21a33f25c
   languageName: node
   linkType: hard
 
@@ -8301,16 +8310,25 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/icons@workspace:packages/icons"
   dependencies:
-    "@spectrum-web-components/base": "npm:1.4.0"
-    "@spectrum-web-components/iconset": "npm:1.4.0"
+    "@spectrum-web-components/base": "npm:1.3.0"
+    "@spectrum-web-components/iconset": "npm:1.3.0"
   languageName: unknown
   linkType: soft
+
+"@spectrum-web-components/iconset@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@spectrum-web-components/iconset@npm:1.3.0"
+  dependencies:
+    "@spectrum-web-components/base": "npm:1.3.0"
+  checksum: 10c0/960a124ece2a050a747e1c9c1e2264a19bb4e94dea1e33b9f49518795b3e9f94ac04e3d620d5fc9edc45d61b1261788210a3ca4a6abe3d494b7b9ea2fabdc381
+  languageName: node
+  linkType: hard
 
 "@spectrum-web-components/iconset@npm:1.4.0, @spectrum-web-components/iconset@workspace:packages/iconset":
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/iconset@workspace:packages/iconset"
   dependencies:
-    "@spectrum-web-components/base": "npm:1.4.0"
+    "@spectrum-web-components/base": "npm:1.3.0"
   languageName: unknown
   linkType: soft
 
@@ -8481,6 +8499,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@spectrum-web-components/progress-circle@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@spectrum-web-components/progress-circle@npm:1.3.0"
+  dependencies:
+    "@spectrum-web-components/base": "npm:1.3.0"
+    "@spectrum-web-components/shared": "npm:1.3.0"
+  checksum: 10c0/49bccec98e26cf8b52c1ba047e4c97e11da5895e268b6c3393a760568ea14267dd562303cb96bb0df0dcdbf09a228fea417ab866933637a90dcb24b4ea4a496c
+  languageName: node
+  linkType: hard
+
 "@spectrum-web-components/progress-circle@npm:1.4.0, @spectrum-web-components/progress-circle@workspace:packages/progress-circle":
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/progress-circle@workspace:packages/progress-circle"
@@ -8508,7 +8536,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/reactive-controllers@workspace:tools/reactive-controllers"
   dependencies:
-    "@spectrum-web-components/progress-circle": "npm:1.4.0"
+    "@spectrum-web-components/progress-circle": "npm:1.3.0"
     colorjs.io: "npm:^0.5.2"
     lit: "npm:^2.5.0 || ^3.1.3"
   languageName: unknown
@@ -8526,6 +8554,17 @@ __metadata:
     "@spectrum-web-components/textfield": "npm:1.4.0"
   languageName: unknown
   linkType: soft
+
+"@spectrum-web-components/shared@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@spectrum-web-components/shared@npm:1.3.0"
+  dependencies:
+    "@lit-labs/observers": "npm:^2.0.2"
+    "@spectrum-web-components/base": "npm:1.3.0"
+    focus-visible: "npm:^5.1.0"
+  checksum: 10c0/244e3fd274a300908f76b757bd21675301c69ce5278c6cfbb38fd886da4ed8691dd32c4b6f03f9f2a29a509533eef98066b876356bbb522eb3e8483a44450e6c
+  languageName: node
+  linkType: hard
 
 "@spectrum-web-components/shared@npm:1.4.0, @spectrum-web-components/shared@workspace:tools/shared":
   version: 0.0.0-use.local
@@ -8596,6 +8635,16 @@ __metadata:
     "@spectrum-web-components/theme": "npm:1.4.0"
   languageName: unknown
   linkType: soft
+
+"@spectrum-web-components/styles@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@spectrum-web-components/styles@npm:1.3.0"
+  dependencies:
+    "@spectrum-web-components/base": "npm:1.3.0"
+    lit: "npm:^2.5.0 || ^3.1.3"
+  checksum: 10c0/30cc6db0458ed6e8e87f56de0aaa8a3e3e72314789d345caf3da61cdc385bb3b002cf04094a447087c0c49fa0dd3020e1127d841d428f034fcf7ff92c2f1d1e5
+  languageName: node
+  linkType: hard
 
 "@spectrum-web-components/styles@npm:1.4.0, @spectrum-web-components/styles@workspace:tools/styles":
   version: 0.0.0-use.local
@@ -8696,8 +8745,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spectrum-web-components/theme@workspace:tools/theme"
   dependencies:
-    "@spectrum-web-components/base": "npm:1.4.0"
-    "@spectrum-web-components/styles": "npm:1.4.0"
+    "@spectrum-web-components/base": "npm:1.3.0"
+    "@spectrum-web-components/styles": "npm:1.3.0"
   languageName: unknown
   linkType: soft
 

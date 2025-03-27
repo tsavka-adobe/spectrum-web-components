@@ -1,62 +1,59 @@
 {
     "name": "@spectrum-web-components/coachmark",
     "version": "1.4.0",
+    "description": "",
     "publishConfig": {
         "access": "public"
     },
-    "description": "",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/coachmark",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
         "directory": "packages/coachmark"
     },
-    "author": "",
-    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/coachmark",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "./src/index.js",
-    "module": "./src/index.js",
     "type": "module",
     "exports": {
         ".": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./package.json": "./package.json",
+        "./sp-coach-indicator.js": {
+            "default": "./sp-coach-indicator.js",
+            "development": "./sp-coach-indicator.dev.js"
+        },
+        "./sp-coachmark.js": {
+            "default": "./sp-coachmark.js",
+            "development": "./sp-coachmark.dev.js"
+        },
         "./src/CoachIndicator.js": {
-            "development": "./src/CoachIndicator.dev.js",
-            "default": "./src/CoachIndicator.js"
+            "default": "./src/CoachIndicator.js",
+            "development": "./src/CoachIndicator.dev.js"
         },
         "./src/Coachmark.js": {
-            "development": "./src/Coachmark.dev.js",
-            "default": "./src/Coachmark.js"
+            "default": "./src/Coachmark.js",
+            "development": "./src/Coachmark.dev.js"
         },
         "./src/CoachmarkItem.js": {
-            "development": "./src/CoachmarkItem.dev.js",
-            "default": "./src/CoachmarkItem.js"
+            "default": "./src/CoachmarkItem.js",
+            "development": "./src/CoachmarkItem.dev.js"
         },
         "./src/coach-indicator-overrides.css.js": "./src/coach-indicator-overrides.css.js",
         "./src/coach-indicator.css.js": "./src/coach-indicator.css.js",
         "./src/coachmark-overrides.css.js": "./src/coachmark-overrides.css.js",
         "./src/coachmark.css.js": "./src/coachmark.css.js",
         "./src/index.js": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
-        },
-        "./sp-coachmark.js": {
-            "development": "./sp-coachmark.dev.js",
-            "default": "./sp-coachmark.js"
-        },
-        "./sp-coach-indicator.js": {
-            "development": "./sp-coach-indicator.dev.js",
-            "default": "./sp-coach-indicator.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         }
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "./src/index.js",
+    "module": "./src/index.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -65,12 +62,14 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/asset": "1.4.0",
         "@spectrum-web-components/base": "1.4.0",
@@ -85,10 +84,17 @@
         "@spectrum-css/coachindicator": "3.0.0-s2-foundations.16",
         "@spectrum-css/coachmark": "8.0.0-s2-foundations.17"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js"
-    ]
+    "keywords": [
+        "design-system",
+        "spectrum",
+        "adobe",
+        "adobe-spectrum",
+        "web components",
+        "web-components",
+        "lit-element",
+        "lit-html",
+        "component",
+        "css"
+    ],
+    "customElements": "custom-elements.json"
 }

@@ -1,23 +1,21 @@
 {
     "name": "@spectrum-web-components/modal",
     "version": "1.4.0",
+    "description": "",
     "publishConfig": {
         "access": "public"
     },
-    "description": "",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/modal",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
         "directory": "packages/modal"
     },
-    "author": "",
-    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/modal",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "src/modal.css.js",
-    "module": "src/modal.css.js",
     "type": "module",
     "exports": {
         ".": "./src/modal-wrapper.css.js",
@@ -26,9 +24,8 @@
         "./src/modal-wrapper.css.js": "./src/modal-wrapper.css.js",
         "./src/modal.css.js": "./src/modal.css.js"
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "./src/modal.css.js",
+    "module": "./src/modal.css.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -37,22 +34,31 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/base": "1.4.0"
     },
     "devDependencies": {
         "@spectrum-css/modal": "6.0.0-s2-foundations.16"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js"
-    ]
+    "keywords": [
+        "design-system",
+        "spectrum",
+        "adobe",
+        "adobe-spectrum",
+        "web components",
+        "web-components",
+        "lit-element",
+        "lit-html",
+        "component",
+        "css"
+    ],
+    "customElements": "custom-elements.json"
 }

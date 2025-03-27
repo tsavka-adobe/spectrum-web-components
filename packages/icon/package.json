@@ -1,37 +1,39 @@
 {
     "name": "@spectrum-web-components/icon",
     "version": "1.4.0",
+    "description": "",
     "publishConfig": {
         "access": "public"
     },
-    "description": "",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/icon",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
         "directory": "packages/icon"
     },
-    "author": "",
-    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/icon",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "./src/index.js",
-    "module": "./src/index.js",
     "type": "module",
     "exports": {
         ".": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./package.json": "./package.json",
+        "./sp-icon.js": {
+            "default": "./sp-icon.js",
+            "development": "./sp-icon.dev.js"
+        },
         "./src/Icon.js": {
-            "development": "./src/Icon.dev.js",
-            "default": "./src/Icon.js"
+            "default": "./src/Icon.js",
+            "development": "./src/Icon.dev.js"
         },
         "./src/IconBase.js": {
-            "development": "./src/IconBase.dev.js",
-            "default": "./src/IconBase.js"
+            "default": "./src/IconBase.js",
+            "development": "./src/IconBase.dev.js"
         },
         "./src/icon-arrow-overrides.css.js": "./src/icon-arrow-overrides.css.js",
         "./src/icon-asterisk-overrides.css.js": "./src/icon-asterisk-overrides.css.js",
@@ -45,8 +47,8 @@
         "./src/icon-triple-gripper-overrides.css.js": "./src/icon-triple-gripper-overrides.css.js",
         "./src/icon.css.js": "./src/icon.css.js",
         "./src/index.js": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./src/spectrum-icon-arrow.css.js": "./src/spectrum-icon-arrow.css.js",
         "./src/spectrum-icon-asterisk.css.js": "./src/spectrum-icon-asterisk.css.js",
@@ -57,15 +59,10 @@
         "./src/spectrum-icon-dash.css.js": "./src/spectrum-icon-dash.css.js",
         "./src/spectrum-icon-double-gripper.css.js": "./src/spectrum-icon-double-gripper.css.js",
         "./src/spectrum-icon-single-gripper.css.js": "./src/spectrum-icon-single-gripper.css.js",
-        "./src/spectrum-icon-triple-gripper.css.js": "./src/spectrum-icon-triple-gripper.css.js",
-        "./sp-icon.js": {
-            "development": "./sp-icon.dev.js",
-            "default": "./sp-icon.js"
-        }
+        "./src/spectrum-icon-triple-gripper.css.js": "./src/spectrum-icon-triple-gripper.css.js"
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "./src/index.js",
+    "module": "./src/index.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -74,12 +71,14 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/base": "1.4.0",
         "@spectrum-web-components/iconset": "1.4.0"
@@ -87,10 +86,17 @@
     "devDependencies": {
         "@spectrum-css/icon": "8.0.1"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js"
-    ]
+    "keywords": [
+        "design-system",
+        "spectrum",
+        "adobe",
+        "adobe-spectrum",
+        "web components",
+        "web-components",
+        "lit-element",
+        "lit-html",
+        "component",
+        "css"
+    ],
+    "customElements": "custom-elements.json"
 }

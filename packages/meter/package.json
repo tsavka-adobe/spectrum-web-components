@@ -1,49 +1,46 @@
 {
     "name": "@spectrum-web-components/meter",
     "version": "1.4.0",
+    "description": "",
     "publishConfig": {
         "access": "public"
     },
-    "description": "",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/meter",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
         "directory": "packages/meter"
     },
-    "author": "",
-    "homepage": "https://opensource.adobe.com/spectrum-web-components/components/meter",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "src/index.js",
-    "module": "src/index.js",
     "type": "module",
     "exports": {
         ".": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./package.json": "./package.json",
+        "./sp-meter.js": {
+            "default": "./sp-meter.js",
+            "development": "./sp-meter.dev.js"
+        },
         "./src/Meter.js": {
-            "development": "./src/Meter.dev.js",
-            "default": "./src/Meter.js"
+            "default": "./src/Meter.js",
+            "development": "./src/Meter.dev.js"
         },
         "./src/index.js": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./src/meter-overrides.css.js": "./src/meter-overrides.css.js",
         "./src/meter.css.js": "./src/meter.css.js",
-        "./src/progress-bar-overrides.css.js": "./src/progress-bar-overrides.css.js",
-        "./sp-meter.js": {
-            "development": "./sp-meter.dev.js",
-            "default": "./sp-meter.js"
-        }
+        "./src/progress-bar-overrides.css.js": "./src/progress-bar-overrides.css.js"
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "./src/index.js",
+    "module": "./src/index.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -52,12 +49,14 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/base": "1.4.0",
         "@spectrum-web-components/field-label": "1.4.0",
@@ -68,10 +67,17 @@
         "@spectrum-css/meter": "0.0.0-s2-foundations.2",
         "@spectrum-css/progressbar": "5.0.0-s2-foundations.19"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js"
-    ]
+    "keywords": [
+        "design-system",
+        "spectrum",
+        "adobe",
+        "adobe-spectrum",
+        "web components",
+        "web-components",
+        "lit-element",
+        "lit-html",
+        "component",
+        "css"
+    ],
+    "customElements": "custom-elements.json"
 }

@@ -1,59 +1,57 @@
 {
     "name": "@spectrum-web-components/story-decorator",
     "version": "1.4.0",
+    "description": "",
     "publishConfig": {
         "access": "public"
     },
-    "description": "",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://opensource.adobe.com/spectrum-web-components/",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
-        "directory": "packages/story-decorator"
+        "directory": "projects/story-decorator"
     },
-    "author": "",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "./src/index.js",
-    "module": "./src/index.js",
     "type": "module",
     "exports": {
         ".": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
-        },
-        "./package.json": "./package.json",
-        "./src/StoryDecorator.js": {
-            "development": "./src/StoryDecorator.dev.js",
-            "default": "./src/StoryDecorator.js"
-        },
-        "./src/index.js": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
-        },
-        "./src/locales.js": {
-            "development": "./src/locales.dev.js",
-            "default": "./src/locales.js"
-        },
-        "./src/types.js": {
-            "development": "./src/types.dev.js",
-            "default": "./src/types.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./decorator": "./decorator.js",
         "./decorator.js": {
-            "development": "./decorator.dev.js",
-            "default": "./decorator.js"
+            "default": "./decorator.js",
+            "development": "./decorator.dev.js"
         },
+        "./package.json": "./package.json",
         "./sp-story-decorator": "./sp-story-decorator.js",
         "./sp-story-decorator.js": {
-            "development": "./sp-story-decorator.dev.js",
-            "default": "./sp-story-decorator.js"
+            "default": "./sp-story-decorator.js",
+            "development": "./sp-story-decorator.dev.js"
+        },
+        "./src/StoryDecorator.js": {
+            "default": "./src/StoryDecorator.js",
+            "development": "./src/StoryDecorator.dev.js"
+        },
+        "./src/index.js": {
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
+        },
+        "./src/locales.js": {
+            "default": "./src/locales.js",
+            "development": "./src/locales.dev.js"
+        },
+        "./src/types.js": {
+            "default": "./src/types.js",
+            "development": "./src/types.dev.js"
         }
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "./src/index.js",
+    "module": "./src/index.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -62,12 +60,15 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js",
+        "./sp-*.ts"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/base": "1.4.0",
         "@spectrum-web-components/field-label": "1.4.0",
@@ -78,11 +79,11 @@
         "@spectrum-web-components/switch": "1.4.0",
         "@spectrum-web-components/theme": "1.4.0"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js",
-        "./sp-*.ts"
-    ]
+    "keywords": [
+        "spectrum css",
+        "web components",
+        "lit-element",
+        "lit-html"
+    ],
+    "customElements": "custom-elements.json"
 }

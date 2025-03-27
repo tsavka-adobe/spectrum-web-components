@@ -1,48 +1,45 @@
 {
     "name": "@spectrum-web-components/truncated",
     "version": "1.4.0",
+    "description": "Web component implementation of a Spectrum design Truncated",
     "publishConfig": {
         "access": "public"
     },
-    "description": "Web component implementation of a Spectrum design Truncated",
     "license": "Apache-2.0",
+    "author": "Adobe",
+    "homepage": "https://adobe.github.io/spectrum-web-components/components/truncated",
     "repository": {
         "type": "git",
         "url": "https://github.com/adobe/spectrum-web-components.git",
         "directory": "tools/truncated"
     },
-    "author": "",
-    "homepage": "https://adobe.github.io/spectrum-web-components/components/truncated",
     "bugs": {
         "url": "https://github.com/adobe/spectrum-web-components/issues"
     },
-    "main": "src/index.js",
-    "module": "src/index.js",
     "type": "module",
     "exports": {
         ".": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
         },
         "./package.json": "./package.json",
-        "./src/Truncated.js": {
-            "development": "./src/Truncated.dev.js",
-            "default": "./src/Truncated.js"
-        },
-        "./src/index.js": {
-            "development": "./src/index.dev.js",
-            "default": "./src/index.js"
-        },
-        "./src/truncated.css.js": "./src/truncated.css.js",
         "./sp-truncated": "./sp-truncated.js",
         "./sp-truncated.js": {
-            "development": "./sp-truncated.dev.js",
-            "default": "./sp-truncated.js"
-        }
+            "default": "./sp-truncated.js",
+            "development": "./sp-truncated.dev.js"
+        },
+        "./src/Truncated.js": {
+            "default": "./src/Truncated.js",
+            "development": "./src/Truncated.dev.js"
+        },
+        "./src/index.js": {
+            "default": "./src/index.js",
+            "development": "./src/index.dev.js"
+        },
+        "./src/truncated.css.js": "./src/truncated.css.js"
     },
-    "scripts": {
-        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
-    },
+    "main": "src/index.js",
+    "module": "src/index.js",
     "files": [
         "**/*.d.ts",
         "**/*.js",
@@ -51,22 +48,25 @@
         "!stories/",
         "!test/"
     ],
-    "keywords": [
-        "spectrum css",
-        "web components",
-        "lit-element",
-        "lit-html"
+    "scripts": {
+        "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+    },
+    "sideEffects": [
+        "./sp-*.js",
+        "./**/*.dev.js"
     ],
+    "types": "./src/index.d.ts",
     "dependencies": {
         "@spectrum-web-components/base": "1.4.0",
         "@spectrum-web-components/overlay": "1.4.0",
         "@spectrum-web-components/styles": "1.4.0",
         "@spectrum-web-components/tooltip": "1.4.0"
     },
-    "types": "./src/index.d.ts",
-    "customElements": "custom-elements.json",
-    "sideEffects": [
-        "./sp-*.js",
-        "./**/*.dev.js"
-    ]
+    "keywords": [
+        "spectrum css",
+        "web components",
+        "lit-element",
+        "lit-html"
+    ],
+    "customElements": "custom-elements.json"
 }
