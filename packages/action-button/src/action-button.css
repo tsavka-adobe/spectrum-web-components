@@ -23,6 +23,16 @@ governing permissions and limitations under the License.
     pointer-events: none !important;
 }
 
+:host {
+    border-radius: var(
+        --mod-actionbutton-border-radius,
+        var(
+            --spectrum-actionbutton-border-radius,
+            var(--spectrum-corner-radius-100)
+        )
+    );
+}
+
 /* confirm with css if we can keep it as css level */
 
 :host([size='xs']) {
