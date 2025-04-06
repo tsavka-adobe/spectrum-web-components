@@ -49,7 +49,7 @@ governing permissions and limitations under the License.
     --spectrum-button-background-color-hover: var(
         --system-button-selected-background-color-hover
     );
-    --mspectrumod-button-background-color-down: var(
+    --spectrum-button-background-color-down: var(
         --system-button-selected-background-color-down
     );
     --spectrum-button-background-color-focus: var(
