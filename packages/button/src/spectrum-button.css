@@ -730,8 +730,11 @@ governing permissions and limitations under the License.
     );
     color: inherit;
     color: var(
-        --mod-button-content-color-default,
-        var(--spectrum-button-content-color-default, inherit)
+        --highcontrast-button-content-color-default,
+        var(
+            --mod-button-content-color-default,
+            var(--spectrum-button-content-color-default, inherit)
+        )
     );
     transition:
         border 0.13s linear,
