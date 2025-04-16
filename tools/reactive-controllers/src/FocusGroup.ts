@@ -210,7 +210,7 @@ export class FocusGroupController<T extends HTMLElement>
         if (
             item &&
             this.isFocusableElement(item) &&
-            this.elements.indexOf(item)
+            this.elements.indexOf(item) !== -1
         ) {
             const diff = this.elements.indexOf(item) - this.currentIndex;
             this.setCurrentIndexCircularly(diff);

@@ -462,7 +462,8 @@ export class Menu extends SizedMixin(SpectrumElement, { noDefaultSize: true }) {
             this.rovingTabindexController?.reset();
     }
 
-    private handleClick(event: Event): void {
+    private handleClick(event: MouseEvent): void {
+        if (event.clientX === Number(0) && event.clientY === Number(0)) return; // prevent click firing if triggered with keyboard event
         if (this.pointerUpTarget === event.target) {
             this.pointerUpTarget = null;
             return;

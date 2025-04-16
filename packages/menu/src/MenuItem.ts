@@ -309,7 +309,8 @@ export class MenuItem extends LikeAnchor(
     @property({ type: Boolean, reflect: true })
     public open = false;
 
-    private handleClickCapture(event: Event): void | boolean {
+    private handleClickCapture(event: MouseEvent): void | boolean {
+        if (event.clientX === Number(0) && event.clientY === Number(0)) return; // prevent click firing if triggered with keyboard event
         if (this.disabled) {
             event.preventDefault();
             event.stopImmediatePropagation();
@@ -576,7 +577,8 @@ export class MenuItem extends LikeAnchor(
     }
 
     protected handleSubmenuOpen(event: Event): void {
-        const shouldFocus = this.matches(':focus, :focus-within') || this.focused;
+        const shouldFocus =
+            this.matches(':focus, :focus-within') || this.focused;
         this.focused = false;
         const parentOverlay = event.composedPath().find((el) => {
             return (
@@ -584,8 +586,7 @@ export class MenuItem extends LikeAnchor(
                 (el as HTMLElement).localName === 'sp-overlay'
             );
         }) as Overlay;
-        if (shouldFocus)
-            this.submenuElement?.focus();
+        if (shouldFocus) this.submenuElement?.focus();
         this.overlayElement.parentOverlayToForceClose = parentOverlay;
     }
 
