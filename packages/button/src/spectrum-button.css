@@ -789,7 +789,13 @@ governing permissions and limitations under the License.
             var(--spectrum-button-border-color-focus)
         )
     );
-    color: var(--spectrum-button-content-color-focus);
+    color: var(
+        --highcontrast-button-content-color-focus,
+        var(
+            --mod-button-content-color-focus,
+            var(--spectrum-button-content-color-focus)
+        )
+    );
     box-shadow: none;
     outline: none;
 }
@@ -815,7 +821,13 @@ governing permissions and limitations under the License.
             var(--spectrum-button-border-color-down)
         )
     );
-    color: var(--spectrum-button-content-color-down);
+    color: var(
+        --highcontrast-button-content-color-down,
+        var(
+            --mod-button-content-color-down,
+            var(--spectrum-button-content-color-down)
+        )
+    );
     box-shadow: none;
 }
 
@@ -835,7 +847,13 @@ governing permissions and limitations under the License.
                 var(--spectrum-button-border-color-hover)
             )
         );
-        color: var(--spectrum-button-content-color-hover);
+        color: var(
+            --highcontrast-button-content-color-hover,
+            var(
+                --mod-button-content-color-hover,
+                var(--spectrum-button-content-color-hover)
+            )
+        );
         box-shadow: none;
     }
 }
@@ -858,7 +876,13 @@ governing permissions and limitations under the License.
             var(--spectrum-button-border-color-disabled)
         )
     );
-    color: var(--spectrum-button-content-color-disabled);
+    color: var(
+        --highcontrast-button-content-color-disabled,
+        var(
+            --mod-button-content-color-disabled,
+            var(--spectrum-button-content-color-disabled)
+        )
+    );
 }
 
 ::slotted([slot='icon']) {
