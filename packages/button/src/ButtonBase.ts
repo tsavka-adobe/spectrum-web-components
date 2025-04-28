@@ -106,13 +106,7 @@ export class ButtonBase extends ObserveSlotText(LikeAnchor(Focusable), '', [
         let handled = false;
         if (this.anchorElement) {
             // click HTML anchor element by proxy
-            this.anchorElement.dispatchEvent(
-                new Event('click', {
-                    bubbles: false,
-                    cancelable: false,
-                    composed: false,
-                })
-            );
+            this.anchorElement.click(); // is this for keydown event only?
             handled = true;
             // if the button type is `submit` or `reset`
         } else if (this.type !== 'button') {
