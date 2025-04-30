@@ -472,7 +472,8 @@ export class MenuItem extends LikeAnchor(
         super.firstUpdated(changes);
         this.setAttribute('tabindex', '-1');
         this.addEventListener('keydown', this.handleKeydown);
-        this.addEventListener('mouseover', this.handleMouseover);
+        this.addEventListener('mouseenter', this.handleMouseover);
+        this.addEventListener('mouseleave', this.handleMouseleave);
         this.addEventListener('pointerdown', this.handlePointerdown);
         this.addEventListener('pointerenter', this.closeOverlaysForRoot);
         if (!this.hasAttribute('id')) {
@@ -487,6 +488,12 @@ export class MenuItem extends LikeAnchor(
             this.focused = false;
         }
     }
+
+    handleMouseleave(): void {
+        this.blur();
+        this.focused = false;
+    }
+
     /**
      * forward key info from keydown event to parent menu
      */
